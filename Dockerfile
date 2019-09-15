@@ -20,16 +20,16 @@ RUN (setx /M DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1 && `
      curl -kL https://aka.ms/vs/15/release/vs_buildtools.exe C:\TEMP\vs_buildtools.exe && `
      C:\TEMP\vs_buildtools.exe --quiet --norestart --wait --nocache `
                                --installPath "C:\BuildTools"  `
-                               --add Microsoft.VisualStudio.Workload.VCTools ^
-                               --add Microsoft.VisualStudio.Component.VC.Tools.14.11 ^
-                               --add Microsoft.Component.MSBuild ^
-                               --add Microsoft.VisualStudio.Component.Roslyn.Compiler ^
-                               --add Microsoft.VisualStudio.Component.TextTemplating ^
-                               --add Microsoft.VisualStudio.Component.VC.CoreIde ^
-                               --add Microsoft.VisualStudio.Component.VC.Redist.14.Latest ^
-                               --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core ^
-                               --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 ^
-                               --add Microsoft.VisualStudio.Component.VC.Tools.14.11 ^
+                               --add Microsoft.VisualStudio.Workload.VCTools `
+                               --add Microsoft.VisualStudio.Component.VC.Tools.14.11 `
+                               --add Microsoft.Component.MSBuild `
+                               --add Microsoft.VisualStudio.Component.Roslyn.Compiler `
+                               --add Microsoft.VisualStudio.Component.TextTemplating `
+                               --add Microsoft.VisualStudio.Component.VC.CoreIde `
+                               --add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `
+                               --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `
+                               --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+                               --add Microsoft.VisualStudio.Component.VC.Tools.14.11 `
                                --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81) || if "%errorlevel%" == "3010" exit 0
 
 RUN curl -kL https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers2/cuda_9.2.148_win10 --output "C:\Temp\cuda_9.2.148_win10.exe" && `
