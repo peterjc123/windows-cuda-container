@@ -1,7 +1,7 @@
 # escape=`
 
 ARG version=1803
-FROM mcr.microsoft.com/windows/servercore:$version
+FROM mcr.microsoft.com/dotnet/framework/runtime:4.8-windowsservercore-:$version
 
 ENV chocolateyUseWindowsCompression false
 
@@ -56,7 +56,7 @@ RUN curl -kL https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installer
     del %TEMP%\cuda_10.0.130_411.31_win10.exe && `
     pushd %TEMP%\cuda100 && `
     start /wait setup.exe -s nvcc_10.0 cuobjdump_10.0 nvprune_10.0 cupti_10.0 cublas_10.0 cublas_dev_10.0 cudart_10.0 cufft_10.0 cufft_dev_10.0 curand_10.0 curand_dev_10.0 cusolver_10.0 cusolver_dev_10.0 cusparse_10.0 cusparse_dev_10.0 nvgraph_10.0 nvgraph_dev_10.0 npp_10.0 npp_dev_10.0 nvrtc_10.0 nvrtc_dev_10.0 nvml_dev_10.0 && `
-    xcopy /Y "%TEMP%\cuda100\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\IDE\VC\VCTargets\BuildCustomizations" && `
+    xcopy /Y "%TEMP%\cuda100\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "C:\BuildTools\Common7\IDE\VC\VCTargets\BuildCustomizations" && `
     popd && `
     rd /s /q %TEMP%\cuda100 && `
     7z x %TEMP%\cudnn-10.0-windows10-x64-v7.4.1.5.zip -o"%TEMP%\cudnn100" && `
