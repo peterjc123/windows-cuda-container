@@ -69,7 +69,7 @@ RUN curl -kL https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installer
     setx /M CUDA_PATH_V10_0 "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.0" && `
     rd /s /q %TEMP%\cudnn100 && `
     curl -kL https://www.dropbox.com/s/9mcolalfdj4n979/NvToolsExt.7z?dl=1 --output "%TEMP%\NvToolsExt.7z" && `
-    7z x %SRC_DIR%\temp_build\NvToolsExt.7z -o"%TEMP%\NvToolsExt" && `
+    7z x %TEMP%\NvToolsExt.7z -o"%TEMP%\NvToolsExt" && `
     del %TEMP%\NvToolsExt.7z && `
     mkdir "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\bin\x64" && `
     mkdir "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\include" && `
