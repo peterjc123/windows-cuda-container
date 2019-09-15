@@ -76,6 +76,6 @@ RUN curl -kL https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installer
     mkdir "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\lib\x64" && `
     xcopy /Y "C:\Temp\NvToolsExt\bin\x64\*.*" "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\bin\x64" && `
     xcopy /Y "C:\Temp\NvToolsExt\include\*.*" "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\include" && `
-    xcopy /Y "C:\Temp\NvToolsExt\lib\x64\*.*" "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\lib\x64" &&
+    xcopy /Y "C:\Temp\NvToolsExt\lib\x64\*.*" "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\lib\x64" && `
     rd /s /q C:\Temp\NvToolsExt && `
     setx /M NVTOOLSEXT_PATH "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\bin\x64"
