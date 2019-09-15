@@ -6,16 +6,17 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'win1803'
+- job: Default
+  timeoutInMinutes: 120
 
-timeoutInMinutes: 120
+  pool:
+    vmImage: 'win1803'
 
-steps:
-- script: |
-    if not "%DOCKER_PASSWORD%" == "" docker login docker.pkg.github.com -u peterjc123 -p %DOCKER_PASSWORD%
-    docker build . --file Dockerfile -m 4GB --isolation="process" --tag docker.pkg.github.com/peterjc123/windows-cuda-container/windows-cuda:v1.0.0
-    if not "%DOCKER_PASSWORD%" == "" docker push docker.pkg.github.com/peterjc123/windows-cuda-container/windows-cuda:v1.0.0
-  displayName: 'Build & Publish the Docker image'
-  env:
-    DOCKER_PASSWORD: $(pass)
+  steps:
+  - script: |
+      if not "%DOCKER_PASSWORD%" == "" docker login docker.pkg.github.com -u peterjc123 -p %DOCKER_PASSWORD%
+      docker build . --file Dockerfile -m 4GB --isolation="process" --tag docker.pkg.github.com/peterjc123/windows-cuda-container/windows-cuda:v1.0.0
+      if not "%DOCKER_PASSWORD%" == "" docker push docker.pkg.github.com/peterjc123/windows-cuda-container/windows-cuda:v1.0.0
+    displayName: 'Build & Publish the Docker image'
+    env:
+      DOCKER_PASSWORD: $(pass)

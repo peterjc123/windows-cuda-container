@@ -1,7 +1,7 @@
 # escape=`
 
 ARG version=1803
-FROM mcr.microsoft.com/dotnet/framework/runtime:4.8-windowsservercore-:$version
+FROM mcr.microsoft.com/windows/servercore:$version
 
 ENV chocolateyUseWindowsCompression false
 
