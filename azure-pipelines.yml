@@ -23,7 +23,7 @@ jobs:
       net start docker
       if not "%DOCKER_PASSWORD%" == "" docker login docker.pkg.github.com -u peterjc123 -p %DOCKER_PASSWORD%
       if errorlevel 1 exit /b 1
-      docker build . --file Dockerfile -m 4GB --isolation="process" --squash --tag docker.pkg.github.com/peterjc123/windows-cuda-container/windows-cuda:v1.0.0
+      docker build . --file Dockerfile -m 4GB --isolation="process" --tag docker.pkg.github.com/peterjc123/windows-cuda-container/windows-cuda:v1.0.0
       if errorlevel 1 exit /b 1
       if not "%DOCKER_PASSWORD%" == "" docker push docker.pkg.github.com/peterjc123/windows-cuda-container/windows-cuda:v1.0.0
       if errorlevel 1 exit /b 1
