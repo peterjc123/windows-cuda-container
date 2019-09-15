@@ -38,7 +38,7 @@ RUN curl -kL https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installer
     del %TEMP%\cuda_9.2.148_win10.exe && `
     pushd %TEMP%\cuda92 && `
     start /wait setup.exe -s nvcc_9.2 cuobjdump_9.2 nvprune_9.2 cupti_9.2 cublas_9.2 cublas_dev_9.2 cudart_9.2 cufft_9.2 cufft_dev_9.2 curand_9.2 curand_dev_9.2 cusolver_9.2 cusolver_dev_9.2 cusparse_9.2 cusparse_dev_9.2 nvgraph_9.2 nvgraph_dev_9.2 npp_9.2 npp_dev_9.2 nvrtc_9.2 nvrtc_dev_9.2 nvml_dev_9.2 && `
-    xcopy /Y "%TEMP%\cuda92\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\IDE\VC\VCTargets\BuildCustomizations" && `
+    xcopy /Y "%TEMP%\cuda92\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "C:\BuildTools\Common7\IDE\VC\VCTargets\BuildCustomizations" && `
     popd && `
     rd /s /q %TEMP%\cuda92 && `
     7z x %TEMP%\cudnn-9.2-windows10-x64-v7.2.1.38.zip -o"%TEMP%\cudnn92" && `
