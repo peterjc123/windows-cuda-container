@@ -15,13 +15,15 @@ jobs:
 
   steps:
   - script: |
-      net stop docker
-      pushd C:\Program Files\Docker\Docker\resources
-      dockerd --unregister-service
-      dockerd --register-service --max-concurrent-uploads 1
-      popd
-      net start docker
+      # net stop docker
+      # pushd C:\Program Files\Docker\Docker\resources
+      # dockerd --unregister-service
+      # dockerd --register-service --max-concurrent-uploads 1
+      # popd
+      # net start docker
       if not "%DOCKER_PASSWORD%" == "" docker login docker.pkg.github.com -u peterjc123 -p %DOCKER_PASSWORD%
+      if errorlevel 1 exit /b 1
+      powershell.exe -Command New-NetQosPolicy -Name "docker upload" -IPProtocol Both -AppPathNameMatchCondition dockerd.exe -ThrottleRateActionBitsPerSecond 5MB
       if errorlevel 1 exit /b 1
       docker build . --file Dockerfile -m 4GB --isolation="process" --tag docker.pkg.github.com/peterjc123/windows-cuda-container/windows-cuda:v1.0.0
       if errorlevel 1 exit /b 1
