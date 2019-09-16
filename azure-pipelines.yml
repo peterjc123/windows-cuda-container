@@ -15,12 +15,12 @@ jobs:
 
   steps:
   - script: |
-      # net stop docker
-      # pushd C:\Program Files\Docker\Docker\resources
-      # dockerd --unregister-service
-      # dockerd --register-service --max-concurrent-uploads 1
-      # popd
-      # net start docker
+      REM net stop docker
+      REM pushd C:\Program Files\Docker\Docker\resources
+      REM dockerd --unregister-service
+      REM dockerd --register-service --max-concurrent-uploads 1
+      REM popd
+      REM net start docker
       if not "%DOCKER_PASSWORD%" == "" docker login docker.pkg.github.com -u peterjc123 -p %DOCKER_PASSWORD%
       if errorlevel 1 exit /b 1
       powershell.exe -Command New-NetQosPolicy -Name "docker upload" -IPProtocol Both -AppPathNameMatchCondition dockerd.exe -ThrottleRateActionBitsPerSecond 5MB
