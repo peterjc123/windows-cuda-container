@@ -32,8 +32,8 @@ RUN (setx /M DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1 && `
                                --add Microsoft.VisualStudio.Component.VC.Tools.14.11 `
                                --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81) || if "%errorlevel%" == "3010" exit 0
 
-RUN curl -kL https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers2/cuda_9.2.148_win10 --output "%TEMP%\cuda_9.2.148_win10.exe" && `
-    curl -kL https://downloads.sourceforge.net/project/cuda-dnn/7/CUDA-9.2/cudnn-9.2-windows10-x64-v7.2.1.38.zip --output "%TEMP%\cudnn-9.2-windows10-x64-v7.2.1.38.zip" && `
+RUN curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cuda_9.2.148_win10.exe --output "%TEMP%\cuda_9.2.148_win10.exe" && `
+    curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cudnn-9.2-windows10-x64-v7.2.1.38.zip --output "%TEMP%\cudnn-9.2-windows10-x64-v7.2.1.38.zip" && `
     7z x %TEMP%\cuda_9.2.148_win10.exe -o"%TEMP%\cuda92" && `
     del %TEMP%\cuda_9.2.148_win10.exe && `
     pushd %TEMP%\cuda92 && `
@@ -50,8 +50,8 @@ RUN curl -kL https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installer
     setx /M CUDA_PATH "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v9.2" && `
     setx /M CUDA_PATH_V9_2 "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v9.2" && `
     rd /s /q %TEMP%\cudnn92 && `
-    curl -kL https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_411.31_win10 --output "%TEMP%\cuda_10.0.130_411.31_win10.exe" && `
-    curl -kL https://www.dropbox.com/s/9v1z9rmbjw9mhx2/cudnn-10.0-windows10-x64-v7.4.1.5.zip?dl=1 --output "%TEMP%\cudnn-10.0-windows10-x64-v7.4.1.5.zip" && `
+    curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cuda_10.0.130_411.31_win10.exe --output "%TEMP%\cuda_10.0.130_411.31_win10.exe" && `
+    curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cudnn-10.0-windows10-x64-v7.4.1.5.zip --output "%TEMP%\cudnn-10.0-windows10-x64-v7.4.1.5.zip" && `
     7z x %TEMP%\cuda_10.0.130_411.31_win10.exe -o"%TEMP%\cuda100" && `
     del %TEMP%\cuda_10.0.130_411.31_win10.exe && `
     pushd %TEMP%\cuda100 && `
