@@ -14,6 +14,10 @@ jobs:
     vmImage: 'win1803'
 
   steps:
+  - script: choco install awscli
+
+    displayName: 'Install AWS Command Line Interface'
+
   - script: call build.bat
 
     displayName: 'Build & Publish the Docker image'
