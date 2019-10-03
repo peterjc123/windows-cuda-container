@@ -2,6 +2,9 @@
 
 if "%AWS_ACCESS_KEY_ID%" == "" goto build_section
 
+choco install awscli
+set "PATH=C:\Program Files\Amazon\AWSCLI\bin;%PATH%"
+
 for /F "usebackq delims=" %%i in (`aws ecr get-login`) do (
     if errorlevel 1 exit /b 1
     set DOCKER_LOGIN_COMMAND=%%i
