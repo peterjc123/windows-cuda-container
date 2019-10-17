@@ -56,7 +56,7 @@ RUN curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cuda_9.2.148_win10.e
     del %TEMP%\cuda_10.1.243_426.00_win10.exe && `
     pushd %TEMP%\cuda101 && `
     start /wait setup.exe -s nvcc_10.1 cuobjdump_10.1 nvprune_10.1 cupti_10.1 cublas_10.1 cublas_dev_10.1 cudart_10.1 cufft_10.1 cufft_dev_10.1 curand_10.1 curand_dev_10.1 cusolver_10.1 cusolver_dev_10.1 cusparse_10.1 cusparse_dev_10.1 nvgraph_10.1 nvgraph_dev_10.1 npp_10.1 npp_dev_10.1 nvrtc_10.1 nvrtc_dev_10.1 nvml_dev_10.1 && `
-    xcopy /Y "%TEMP%\cuda100\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "C:\BuildTools\Common7\IDE\VC\VCTargets\BuildCustomizations" && `
+    xcopy /Y "%TEMP%\cuda101\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "C:\BuildTools\Common7\IDE\VC\VCTargets\BuildCustomizations" && `
     popd && `
     rd /s /q %TEMP%\cuda101 && `
     7z x %TEMP%\cudnn-10.1-windows10-x64-v7.6.4.38.zip -o"%TEMP%\cudnn101" && `
