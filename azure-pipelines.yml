@@ -18,6 +18,4 @@ jobs:
 
     displayName: 'Build & Publish the Docker image'
     env:
-      AWS_ACCESS_KEY_ID: $(aws_accesskey)
-      AWS_SECRET_ACCESS_KEY: $(aws_secret)
-      AWS_DEFAULT_REGION: $(aws_region)
+      DOCKER_PASSWORD: $(pass1)

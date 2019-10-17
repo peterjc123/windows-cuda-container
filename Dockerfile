@@ -50,24 +50,24 @@ RUN curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cuda_9.2.148_win10.e
     setx /M CUDA_PATH "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v9.2" && `
     setx /M CUDA_PATH_V9_2 "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v9.2" && `
     rd /s /q %TEMP%\cudnn92 && `
-    curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cuda_10.0.130_411.31_win10.exe --output "%TEMP%\cuda_10.0.130_411.31_win10.exe" && `
-    curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cudnn-10.0-windows10-x64-v7.4.1.5.zip --output "%TEMP%\cudnn-10.0-windows10-x64-v7.4.1.5.zip" && `
-    7z x %TEMP%\cuda_10.0.130_411.31_win10.exe -o"%TEMP%\cuda100" && `
-    del %TEMP%\cuda_10.0.130_411.31_win10.exe && `
-    pushd %TEMP%\cuda100 && `
-    start /wait setup.exe -s nvcc_10.0 cuobjdump_10.0 nvprune_10.0 cupti_10.0 cublas_10.0 cublas_dev_10.0 cudart_10.0 cufft_10.0 cufft_dev_10.0 curand_10.0 curand_dev_10.0 cusolver_10.0 cusolver_dev_10.0 cusparse_10.0 cusparse_dev_10.0 nvgraph_10.0 nvgraph_dev_10.0 npp_10.0 npp_dev_10.0 nvrtc_10.0 nvrtc_dev_10.0 nvml_dev_10.0 && `
+    curl -kL https://ossci-windows.s3.amazonaws.com/cuda_10.1.243_426.00_win10.exe --output "%TEMP%\cuda_10.1.243_426.00_win10.exe" && `
+    curl -kL https://ossci-windows.s3.amazonaws.com/cudnn-10.1-windows10-x64-v7.6.4.38.zip --output "%TEMP%\cudnn-10.1-windows10-x64-v7.6.4.38.zip" && `
+    7z x %TEMP%\cuda_10.1.243_426.00_win10.exe -o"%TEMP%\cuda101" && `
+    del %TEMP%\cuda_10.1.243_426.00_win10.exe && `
+    pushd %TEMP%\cuda101 && `
+    start /wait setup.exe -s nvcc_10.1 cuobjdump_10.1 nvprune_10.1 cupti_10.1 cublas_10.1 cublas_dev_10.1 cudart_10.1 cufft_10.1 cufft_dev_10.1 curand_10.1 curand_dev_10.1 cusolver_10.1 cusolver_dev_10.1 cusparse_10.1 cusparse_dev_10.1 nvgraph_10.1 nvgraph_dev_10.1 npp_10.1 npp_dev_10.1 nvrtc_10.1 nvrtc_dev_10.1 nvml_dev_10.1 && `
     xcopy /Y "%TEMP%\cuda100\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "C:\BuildTools\Common7\IDE\VC\VCTargets\BuildCustomizations" && `
     popd && `
-    rd /s /q %TEMP%\cuda100 && `
-    7z x %TEMP%\cudnn-10.0-windows10-x64-v7.4.1.5.zip -o"%TEMP%\cudnn100" && `
-    del %TEMP%\cudnn-10.0-windows10-x64-v7.4.1.5.zip && `
-    xcopy /Y "%TEMP%\cudnn100\cuda\bin\*.*" "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin" && `
-    xcopy /Y "%TEMP%\cudnn100\cuda\lib\x64\*.*" "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.0\lib\x64" && `
-    xcopy /Y "%TEMP%\cudnn100\cuda\include\*.*" "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include" && `
-    setx /M PATH "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin;%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp;%PATH%" && `
-    setx /M CUDA_PATH "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.0" && `
-    setx /M CUDA_PATH_V10_0 "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.0" && `
-    rd /s /q %TEMP%\cudnn100 && `
+    rd /s /q %TEMP%\cuda101 && `
+    7z x %TEMP%\cudnn-10.1-windows10-x64-v7.6.4.38.zip -o"%TEMP%\cudnn101" && `
+    del %TEMP%\cudnn-10.1-windows10-x64-v7.6.4.38.zip && `
+    xcopy /Y "%TEMP%\cudnn101\cuda\bin\*.*" "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin" && `
+    xcopy /Y "%TEMP%\cudnn101\cuda\lib\x64\*.*" "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64" && `
+    xcopy /Y "%TEMP%\cudnn101\cuda\include\*.*" "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include" && `
+    setx /M PATH "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin;%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.1\libnvvp;%PATH%" && `
+    setx /M CUDA_PATH "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.1" && `
+    setx /M CUDA_PATH_V10_1 "%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v10.1" && `
+    rd /s /q %TEMP%\cudnn101 && `
     curl -kL https://www.dropbox.com/s/9mcolalfdj4n979/NvToolsExt.7z?dl=1 --output "%TEMP%\NvToolsExt.7z" && `
     7z x %TEMP%\NvToolsExt.7z -o"%TEMP%\NvToolsExt" && `
     del %TEMP%\NvToolsExt.7z && `
