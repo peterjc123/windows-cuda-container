@@ -1,9 +1,9 @@
 # escape=`
 
-ARG version=10.0.17763.973
+ARG version=10.0.17763.1039
 FROM mcr.microsoft.com/windows/servercore:$version
 
-ENV chocolateyUseWindowsCompression true
+ENV chocolateyUseWindowsCompression false
 
 SHELL ["cmd", "/S", "/C"]
 
