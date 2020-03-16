@@ -19,7 +19,6 @@ RUN (setx /M DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1 && `
      setx /M VSDEVCMD_ARGS "-vcvars_ver=14.11" && `
      curl -kL https://aka.ms/vs/15/release/vs_buildtools.exe --output %TEMP%\vs_buildtools.exe && `
      %TEMP%\vs_buildtools.exe --quiet --norestart --wait --nocache `
-                               --installPath "C:\BuildTools"  `
                                --add Microsoft.VisualStudio.Workload.VCTools `
                                --add Microsoft.VisualStudio.Component.VC.Tools.14.11 `
                                --add Microsoft.Component.MSBuild `
@@ -78,4 +77,4 @@ RUN curl -kL https://ossci-windows.s3.amazonaws.com/win2016/cuda_9.2.148_win10.e
     xcopy /Y "%TEMP%\NvToolsExt\include\*.*" "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\include" && `
     xcopy /Y "%TEMP%\NvToolsExt\lib\x64\*.*" "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\lib\x64" && `
     rd /s /q %TEMP%\NvToolsExt && `
-    setx /M NVTOOLSEXT_PATH "%ProgramFiles%\NVIDIA Corporation\NvToolsExt\bin\x64"
+    setx /M NVTOOLSEXT_PATH "%ProgramFiles%\NVIDIA Corporation\NvToolsExt"
