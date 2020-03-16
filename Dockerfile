@@ -1,6 +1,6 @@
 # escape=`
 
-ARG version=1803
+ARG version=ltsc2019
 FROM mcr.microsoft.com/windows/servercore:$version
 
 ENV chocolateyUseWindowsCompression false
