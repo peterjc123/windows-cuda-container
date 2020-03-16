@@ -1,6 +1,6 @@
 # escape=`
 
-ARG version=ltsc2019
+ARG version=10.0.17763.973
 FROM mcr.microsoft.com/windows/servercore:$version
 
 ENV chocolateyUseWindowsCompression true
