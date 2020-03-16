@@ -3,7 +3,7 @@
 ARG version=ltsc2019
 FROM mcr.microsoft.com/windows/servercore:$version
 
-ENV chocolateyUseWindowsCompression false
+ENV chocolateyUseWindowsCompression true
 
 SHELL ["cmd", "/S", "/C"]
 
