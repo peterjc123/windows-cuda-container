@@ -12,7 +12,7 @@ RUN powershell -Command `
     choco feature disable --name showDownloadProgress; `
     choco feature enable --name allowGlobalConfirmation
 
-RUN choco install curl 7zip git cmake && `
+RUN choco install curl 7zip git cmake awscli && `
     setx /M PATH "%PATH%;C:\Program Files\Git\bin;C:\Program Files\CMake\bin"
 
 RUN (setx /M DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1 && `
