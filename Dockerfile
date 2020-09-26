@@ -1,6 +1,6 @@
 # escape=`
 
-ARG version=10.0.17763.1039
+ARG version=1809
 FROM mcr.microsoft.com/windows/servercore:$version
 
 ENV chocolateyUseWindowsCompression false
@@ -16,20 +16,14 @@ RUN choco install curl 7zip git cmake awscli && `
     setx /M PATH "%PATH%;C:\Program Files\Git\bin;C:\Program Files\CMake\bin"
 
 RUN (setx /M DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1 && `
-     setx /M VSDEVCMD_ARGS "-vcvars_ver=14.11" && `
-     curl -kL https://aka.ms/vs/15/release/vs_buildtools.exe --output %TEMP%\vs_buildtools.exe && `
+     curl -kL https://aka.ms/vs/16/release/vs_buildtools.exe --output %TEMP%\vs_buildtools.exe && `
      %TEMP%\vs_buildtools.exe --quiet --norestart --wait --nocache `
                                --add Microsoft.VisualStudio.Workload.VCTools `
-                               --add Microsoft.VisualStudio.Component.VC.Tools.14.11 `
                                --add Microsoft.Component.MSBuild `
                                --add Microsoft.VisualStudio.Component.Roslyn.Compiler `
-                               --add Microsoft.VisualStudio.Component.TextTemplating `
-                               --add Microsoft.VisualStudio.Component.VC.CoreIde `
+                               --add Microsoft.VisualStudio.Component.VC.CoreBuildTools `
                                --add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `
-                               --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `
-                               --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-                               --add Microsoft.VisualStudio.Component.VC.Tools.14.11 `
-                               --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81) || if "%errorlevel%" == "3010" exit 0
+                               --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64) || if "%errorlevel%" == "3010" exit 0
 
 RUN curl -kL https://ossci-windows.s3.amazonaws.com/cuda_10.1.243_426.00_win10.exe --output "%TEMP%\cuda_10.1.243_426.00_win10.exe" && `
     curl -kL https://ossci-windows.s3.amazonaws.com/cudnn-10.1-windows10-x64-v7.6.4.38.zip --output "%TEMP%\cudnn-10.1-windows10-x64-v7.6.4.38.zip" && `
@@ -37,7 +31,7 @@ RUN curl -kL https://ossci-windows.s3.amazonaws.com/cuda_10.1.243_426.00_win10.e
     del %TEMP%\cuda_10.1.243_426.00_win10.exe && `
     pushd %TEMP%\cuda101 && `
     start /wait setup.exe -s nvcc_10.1 cuobjdump_10.1 nvprune_10.1 cupti_10.1 cublas_10.1 cublas_dev_10.1 cudart_10.1 cufft_10.1 cufft_dev_10.1 curand_10.1 curand_dev_10.1 cusolver_10.1 cusolver_dev_10.1 cusparse_10.1 cusparse_dev_10.1 nvgraph_10.1 nvgraph_dev_10.1 npp_10.1 npp_dev_10.1 nvrtc_10.1 nvrtc_dev_10.1 nvml_dev_10.1 && `
-    xcopy /Y "%TEMP%\cuda101\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "%PROGRAMFILES(X86)%\Microsoft Visual Studio\2017\BuildTools\Common7\IDE\VC\VCTargets\BuildCustomizations" && `
+    xcopy /Y "%TEMP%\cuda101\CUDAVisualStudioIntegration\extras\visual_studio_integration\MSBuildExtensions\*.*" "%PROGRAMFILES(X86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Microsoft\VC\v160\BuildCustomizations" && `
     popd && `
     rd /s /q %TEMP%\cuda101 && `
     7z x %TEMP%\cudnn-10.1-windows10-x64-v7.6.4.38.zip -o"%TEMP%\cudnn101" && `
