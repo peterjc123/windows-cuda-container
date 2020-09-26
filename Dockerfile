@@ -13,7 +13,7 @@ RUN powershell -Command `
     choco feature enable --name allowGlobalConfirmation
 
 RUN choco install curl 7zip git cmake awscli && `
-    setx /M PATH "%PATH%;C:\Program Files\Git\bin;C:\Program Files\CMake\bin"
+    setx /M PATH "%PATH%;C:\Program Files\7-Zip;C:\Program Files\Git\bin;C:\Program Files\CMake\bin;C:\Program Files\Amazon\AWSCLIV2"
 
 RUN (setx /M DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1 && `
      curl -kL https://aka.ms/vs/16/release/vs_buildtools.exe --output %TEMP%\vs_buildtools.exe && `
