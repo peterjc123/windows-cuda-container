@@ -20,6 +20,7 @@ RUN (setx /M DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1 && `
      %TEMP%\vs_buildtools.exe --quiet --norestart --wait --nocache `
                                --add Microsoft.VisualStudio.Workload.VCTools `
                                --add Microsoft.Component.MSBuild `
+                               --add Microsoft.VisualStudio.Component.Windows10SDK.18362 `
                                --add Microsoft.VisualStudio.Component.Roslyn.Compiler `
                                --add Microsoft.VisualStudio.Component.VC.CoreBuildTools `
                                --add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `
