@@ -1,7 +1,7 @@
 # escape=`
 
 ARG version=1809
-FROM mcr.microsoft.com/windows/servercore:$version
+FROM mcr.microsoft.com/windows:$version
 
 ENV chocolateyUseWindowsCompression false
 
